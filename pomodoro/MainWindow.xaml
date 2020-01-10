@@ -1,0 +1,17 @@
+﻿<Window x:Class="pomodoro.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pomodoro"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="383.606" Width="800">
+    <Grid>
+        <Button x:Name="btn_start" Content="Start" HorizontalAlignment="Left" Margin="570,75,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_start_Click"/>
+        <Button x:Name="btn_pause" Content="Pause" HorizontalAlignment="Left" Margin="570,152,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_pause_Click"/>
+        <Button x:Name="btn_reset" Content="Reset" HorizontalAlignment="Left" Margin="570,229,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.433,3.972" Click="btn_reset_Click"/>
+        <Label x:Name="lbl_time" Content="00:00:00" HorizontalAlignment="Left" Margin="98,130,0,0" VerticalAlignment="Top" Height="110" Width="279" FontSize="72"/>
+        <TextBox x:Name="tbx_nbSession" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.105,-0.38" TextChanged="tbx_nbSession__TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.csprojAssemblyReference.cache
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\MainWindow.g.cs
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\App.g.cs
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro_MarkupCompile.cache
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro_MarkupCompile.lref
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\bin\Debug\pomodoro.exe.config
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\bin\Debug\pomodoro.exe
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\bin\Debug\pomodoro.pdb
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\MainWindow.baml
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.g.resources
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.Properties.Resources.resources
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.csproj.GenerateResource.cache
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.exe
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.pdb
