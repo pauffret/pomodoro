@@ -10,10 +10,11 @@
         <TabControl x:Name="tbc_pomodoro" HorizontalAlignment="Left" Height="324" Margin="25,23,0,0" VerticalAlignment="Top" Width="742">
             <TabItem x:Name="tbi_pomodoro" Header="Pomodoro">
                 <Grid x:Name="grid_pomodoro" Background="#FFE5E5E5">
-                    <Button x:Name="btn_start" Content="Start" HorizontalAlignment="Left" Margin="527,42,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_start_Click"/>
-                    <Button x:Name="btn_pause" Content="Pause" HorizontalAlignment="Left" Margin="527,119,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_pause_Click"/>
-                    <Button x:Name="btn_reset" Content="Reset" HorizontalAlignment="Left" Margin="527,196,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.433,3.972" Click="btn_reset_Click"/>
-                    <Label x:Name="lbl_time" Content="00:00:00" HorizontalAlignment="Left" Margin="55,97,0,0" VerticalAlignment="Top" Height="110" Width="279" FontSize="72"/>
+                    <Button x:Name="btn_start" Content="Start" HorizontalAlignment="Left" Margin="229,198,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_start_Click"/>
+                    <Button x:Name="btn_pause" Content="Pause" HorizontalAlignment="Left" Margin="374,198,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_pause_Click"/>
+                    <Label x:Name="lbl_time" Content="00:00" HorizontalAlignment="Left" Margin="274,88,0,0" VerticalAlignment="Top" Height="105" Width="188" FontSize="72"/>
+                    <Label x:Name="lbl_titre" Content="Pomodoro" HorizontalAlignment="Left" Margin="271,10,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_indication" Content="Vous devez ajouter une nouvelle session dans les paramètres" HorizontalAlignment="Left" Margin="67,63,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="-0.2,0.974"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tbi_parametre" Header="Paramètre">

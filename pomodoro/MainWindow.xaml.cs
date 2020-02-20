@@ -28,71 +28,114 @@ namespace pomodoro
         SoundPlayer beepSound = new SoundPlayer(Properties.Resources.beep06);
         SoundPlayer uefaSound = new SoundPlayer(Properties.Resources.uefa);
         SoundPlayer policeSound = new SoundPlayer(Properties.Resources.police);
-        int statement = 1;
+        int statement = 0;
         int nbSession = 0;
+        int pause = 0;
 
         public MainWindow()
         {
             InitializeComponent();
+            getTimer();
+        }
 
-            _time = TimeSpan.FromSeconds(5);
-
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+        private void getTimer()
+        {
+            if (nbSession < getNbPomodoro())
             {
-                lbl_time.Content = _time.ToString("c");
-                if (_time == TimeSpan.Zero)
+                if (statement == 0)
                 {
-                    _timer.Stop();
-                    beepSound.Play();
-                    if (statement == 0)
+                    _time = TimeSpan.FromSeconds(5);
+                    lbl_titre.Content = "Travail";
+                    // TODO afficher le tag de la session dans lbl_indication
+                    lbl_indication.Content = "";
+                    _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                     {
-                        _time = TimeSpan.FromSeconds(5);
-                        btn_start.Content = "Démarer la session";
-                        nbSession += 1;
+                    lbl_time.Content = _time.ToString("c").Substring(3, 5);
+                    if (_time == TimeSpan.Zero)
+                    {
+                        _timer.Stop();
+                        beepSound.Play();
                         statement = 1;
-                        Console.WriteLine("start" + nbSession);
+                        lbl_indication.Content = "Appuyer sur Start pour démarrer la pause";
+                    }
+                    _time = _time.Add(TimeSpan.FromSeconds(-1));
+                    }, Application.Current.Dispatcher);
+                }
+                else
+                {
+                    lbl_titre.Content = "Pause";
+                    lbl_indication.Content = "";
+                    if (nbSession == 3)
+                    {
+                        _time = TimeSpan.FromSeconds(4);
                     }
                     else
                     {
-                        statement = 0;
-                        btn_start.Content = "Démarer la pause";
-                        if (nbSession == 3)
-                        {
-                            _time = TimeSpan.FromSeconds(4);
-                            Console.WriteLine("longPause");
-                        }
-                        else
-                        {
-                            _time = TimeSpan.FromSeconds(2);
-                            Console.WriteLine("pause");
-                        }
+                        _time = TimeSpan.FromSeconds(2);
                     }
+                    _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+                    {
+                        lbl_time.Content = _time.ToString("c").Substring(3, 5);
+                        if (_time == TimeSpan.Zero)
+                        {
+                            _timer.Stop();
+                            beepSound.Play();
+                            nbSession += 1;
+                            statement = 0;
+                            if (nbSession < getNbPomodoro())
+                            {
+                                lbl_indication.Content = "Appuyer sur Start pour démarrer la session suivante";
+                            }
+                            else
+                            {
+                                lbl_indication.Content = "Vous devez ajouter une nouvelle session dans les paramètres";
+                            }
+                        }
+                        _time = _time.Add(TimeSpan.FromSeconds(-1));
+                    }, Application.Current.Dispatcher);
                 }
-                _time = _time.Add(TimeSpan.FromSeconds(-1));
-            }, Application.Current.Dispatcher);
-            _timer.Stop();
+            }
+            else
+            {
+                lbl_indication.Content = "Vous devez ajouter une nouvelle session dans les paramètres";
+            }
         }
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
-            _timer.Start();
+            if (nbSession < getNbPomodoro() & getNbPomodoro() != 0)
+            {
+                // TODO les sessions s'enchaine bien si on les ajoutent au début mais si on en rajoute une
+                // après avoir lancé le timer une fois le timer bug
+                // Je pense que c'est à cause du _timer.Start() qui est le seul a lancé le timer sans définir une durée au début
+                // mais je ne comprend pas pourquoi vu qu'il ne devrait pas passé sans qu'une pause est été faite avant
+                if (_timer != null & pause == 1)
+                {
+                    _timer.Start();
+                    pause = 0;
+                }
+                else
+                {
+                    getTimer();
+                }
+            }
         }
 
         private void btn_pause_Click(object sender, RoutedEventArgs e)
         {
-            _timer.Stop();
-        }
-
-        private void btn_reset_Click(object sender, RoutedEventArgs e)
-        {
-            _time = new TimeSpan();
-            _time = TimeSpan.FromSeconds(1500);
-            lbl_time.Content = _time.ToString("c");
+            if (getNbPomodoro() != 0)
+            {
+                _timer.Stop();
+                pause = 1;
+            }
         }
 
         private void btn_valider_Click(object sender, RoutedEventArgs e)
         {
-            lbx_historiqueSession.Items.Add(tbx_tagSession.Text);
+            if (tbx_tagSession.Text != "")
+            {
+                lbx_historiqueSession.Items.Add(tbx_tagSession.Text);
+            }
             tbx_tagSession.Text = "";
         }
 
