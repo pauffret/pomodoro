@@ -5,13 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pomodoro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="383.606" Width="800">
+        Title="MainWindow" Height="403.756" Width="800">
     <Grid>
-        <Button x:Name="btn_start" Content="Start" HorizontalAlignment="Left" Margin="570,75,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_start_Click"/>
-        <Button x:Name="btn_pause" Content="Pause" HorizontalAlignment="Left" Margin="570,152,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_pause_Click"/>
-        <Button x:Name="btn_reset" Content="Reset" HorizontalAlignment="Left" Margin="570,229,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.433,3.972" Click="btn_reset_Click"/>
-        <Label x:Name="lbl_time" Content="00:00:00" HorizontalAlignment="Left" Margin="98,130,0,0" VerticalAlignment="Top" Height="110" Width="279" FontSize="72"/>
-        <TextBox x:Name="tbx_nbSession" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.105,-0.38" TextChanged="tbx_nbSession__TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+        <TabControl x:Name="tbc_pomodoro" HorizontalAlignment="Left" Height="324" Margin="25,23,0,0" VerticalAlignment="Top" Width="742">
+            <TabItem x:Name="tbi_pomodoro" Header="Pomodoro">
+                <Grid x:Name="grid_pomodoro" Background="#FFE5E5E5">
+                    <Button x:Name="btn_start" Content="Start" HorizontalAlignment="Left" Margin="527,42,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_start_Click"/>
+                    <Button x:Name="btn_pause" Content="Pause" HorizontalAlignment="Left" Margin="527,119,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" Click="btn_pause_Click"/>
+                    <Button x:Name="btn_reset" Content="Reset" HorizontalAlignment="Left" Margin="527,196,0,0" VerticalAlignment="Top" Width="134" Height="61" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.433,3.972" Click="btn_reset_Click"/>
+                    <Label x:Name="lbl_time" Content="00:00:00" HorizontalAlignment="Left" Margin="55,97,0,0" VerticalAlignment="Top" Height="110" Width="279" FontSize="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbi_parametre" Header="Paramètre">
+                <Grid x:Name="grid_parametre" Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="71*"/>
+                        <ColumnDefinition Width="650*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tbx_tagSession" HorizontalAlignment="Left" Height="23" Margin="28,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.105,-0.38" TextChanged="tbx_tagSession__TextChanged" Grid.Column="2"/>
+                    <Label x:Name="lbl_ajoutSession" Content="Ajouter une nouvelle session" HorizontalAlignment="Left" Margin="2,46,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2"/>
+                    <Button x:Name="btn_valider" Content="Ajouter" HorizontalAlignment="Left" Margin="47,161,0,0" VerticalAlignment="Top" Width="75" Click="btn_valider_Click" Grid.Column="2"/>
+                    <Label x:Name="lbl_historiqueSession" Content="Historique" HorizontalAlignment="Left" Margin="435,46,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2"/>
+                    <ListBox x:Name="lbx_historiqueSession" Grid.Column="2" HorizontalAlignment="Left" Height="142" Margin="397,77,0,0" VerticalAlignment="Top" Width="149"/>
+                    <Label x:Name="lbl_session" Content="Tag de la session :" Grid.Column="2" HorizontalAlignment="Left" Margin="24,101,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

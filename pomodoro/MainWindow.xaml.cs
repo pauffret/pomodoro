@@ -31,7 +31,7 @@ namespace pomodoro
         {
             InitializeComponent();
 
-            _time = TimeSpan.FromSeconds(2);
+            _time = TimeSpan.FromSeconds(1500);
 
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
@@ -65,15 +65,31 @@ namespace pomodoro
             lbl_time.Content = _time.ToString("c");
         }
 
-        private void tbx_nbSession__TextChanged(object sender, TextChangedEventArgs e)
+        /*private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }*/
+
+        private void btn_valider_Click(object sender, RoutedEventArgs e)
+        {
+            lbx_historiqueSession.Items.Add(tbx_tagSession.Text);
+            tbx_tagSession.Text = "";
+        }
+
+        private void tbx_tagSession__TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        private int getNbPomodoro()
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            int nbPomodoros = 0;
+            foreach (var item in lbx_historiqueSession.Items)
+            {
+                nbPomodoros += 1;
+            }
+            return nbPomodoros;
         }
     }
 }
