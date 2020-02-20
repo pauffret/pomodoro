@@ -12,3 +12,4 @@ D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.Properties.Resources.r
 D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.csproj.GenerateResource.cache
 D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.exe
 D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro.pdb
+D:\EPSI\.NET\Projets\pomodoro\pomodoro\obj\Debug\pomodoro_Content.g.cs

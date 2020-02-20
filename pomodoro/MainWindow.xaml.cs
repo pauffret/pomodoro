@@ -25,23 +25,48 @@ namespace pomodoro
     {
         DispatcherTimer _timer;
         TimeSpan _time;
-        SoundPlayer simpleSound = new SoundPlayer(@"D:\EPSI\.NET\Projets\pomodoro\bip\beep-06.wav");
+        SoundPlayer beepSound = new SoundPlayer(Properties.Resources.beep06);
+        SoundPlayer uefaSound = new SoundPlayer(Properties.Resources.uefa);
+        SoundPlayer policeSound = new SoundPlayer(Properties.Resources.police);
+        int statement = 1;
+        int nbSession = 0;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _time = TimeSpan.FromSeconds(1500);
+            _time = TimeSpan.FromSeconds(5);
 
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 lbl_time.Content = _time.ToString("c");
-                if (_time == TimeSpan.Zero){
+                if (_time == TimeSpan.Zero)
+                {
                     _timer.Stop();
-                    simpleSound.Play();
-                    _time = TimeSpan.FromSeconds(300);
-                    _timer.Start();
-                    simpleSound.Play();
+                    beepSound.Play();
+                    if (statement == 0)
+                    {
+                        _time = TimeSpan.FromSeconds(5);
+                        btn_start.Content = "Démarer la session";
+                        nbSession += 1;
+                        statement = 1;
+                        Console.WriteLine("start" + nbSession);
+                    }
+                    else
+                    {
+                        statement = 0;
+                        btn_start.Content = "Démarer la pause";
+                        if (nbSession == 3)
+                        {
+                            _time = TimeSpan.FromSeconds(4);
+                            Console.WriteLine("longPause");
+                        }
+                        else
+                        {
+                            _time = TimeSpan.FromSeconds(2);
+                            Console.WriteLine("pause");
+                        }
+                    }
                 }
                 _time = _time.Add(TimeSpan.FromSeconds(-1));
             }, Application.Current.Dispatcher);
@@ -65,12 +90,6 @@ namespace pomodoro
             lbl_time.Content = _time.ToString("c");
         }
 
-        /*private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }*/
-
         private void btn_valider_Click(object sender, RoutedEventArgs e)
         {
             lbx_historiqueSession.Items.Add(tbx_tagSession.Text);
@@ -91,5 +110,6 @@ namespace pomodoro
             }
             return nbPomodoros;
         }
+
     }
 }

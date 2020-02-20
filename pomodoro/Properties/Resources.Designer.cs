@@ -67,5 +67,38 @@ namespace pomodoro.Properties
                 resourceCulture = value;
             }
         }
+
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream beep06
+        {
+            get
+            {
+                return ResourceManager.GetStream("beep06", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream police
+        {
+            get
+            {
+                return ResourceManager.GetStream("police", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream uefa
+        {
+            get
+            {
+                return ResourceManager.GetStream("uefa", resourceCulture);
+            }
+        }
     }
 }
