@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
@@ -31,6 +32,7 @@ namespace pomodoro
         int statement = 0;
         int nbSession = 0;
         int pause = 0;
+        ArrayList sessionList = new ArrayList();
 
         public MainWindow()
         {
@@ -40,13 +42,15 @@ namespace pomodoro
 
         private void getTimer()
         {
+            foreach(String session in sessionList) { }
             if (nbSession < getNbPomodoro())
             {
                 if (statement == 0)
                 {
-                    _time = TimeSpan.FromSeconds(5);
-                    lbl_titre.Content = "Travail";
+                    _time = TimeSpan.FromSeconds(1500);
+                    lbl_titre.Content = "Travail #"+(nbSession+1);
                     // TODO afficher le tag de la session dans lbl_indication
+                    int countSession = lbx_historiqueSession.Items.Count;
                     lbl_indication.Content = "";
                     _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                     {
@@ -67,11 +71,11 @@ namespace pomodoro
                     lbl_indication.Content = "";
                     if (nbSession == 3)
                     {
-                        _time = TimeSpan.FromSeconds(4);
+                        _time = TimeSpan.FromSeconds(900);
                     }
                     else
                     {
-                        _time = TimeSpan.FromSeconds(2);
+                        _time = TimeSpan.FromSeconds(300);
                     }
                     _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                     {
@@ -105,10 +109,7 @@ namespace pomodoro
         {
             if (nbSession < getNbPomodoro() & getNbPomodoro() != 0)
             {
-                // TODO les sessions s'enchaine bien si on les ajoutent au début mais si on en rajoute une
-                // après avoir lancé le timer une fois le timer bug
-                // Je pense que c'est à cause du _timer.Start() qui est le seul a lancé le timer sans définir une durée au début
-                // mais je ne comprend pas pourquoi vu qu'il ne devrait pas passé sans qu'une pause est été faite avant
+
                 if (_timer != null & pause == 1)
                 {
                     _timer.Start();
@@ -135,19 +136,22 @@ namespace pomodoro
             if (tbx_tagSession.Text != "")
             {
                 lbx_historiqueSession.Items.Add(tbx_tagSession.Text);
+                sessionList.Add(tbx_tagSession.Text);
             }
             tbx_tagSession.Text = "";
         }
 
         private void tbx_tagSession__TextChanged(object sender, TextChangedEventArgs e)
         {
-
+           
         }
 
         private int getNbPomodoro()
         {
+            
             int nbPomodoros = 0;
             foreach (var item in lbx_historiqueSession.Items)
+                
             {
                 nbPomodoros += 1;
             }
